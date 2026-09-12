@@ -1,0 +1,644 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EnglishPro — Английский с нуля за 3 месяца</title>
+    
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+    <!-- Font Awesome Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <!-- AOS Library (Animation on Scroll) -->
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Custom CSS -->
+    <style>
+        :root {
+            --primary-color: #4F46E5;
+            --primary-hover: #4338CA;
+            --secondary-color: #06B6D4;
+            --dark-color: #0F172A;
+            --light-bg: #F8FAFC;
+            --card-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.05), 0 8px 10px -6px rgba(0, 0, 0, 0.01);
+            --transition-speed: 0.3s;
+        }
+
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            color: #334155;
+            background-color: var(--light-bg);
+            overflow-x: hidden;
+            scroll-behavior: smooth;
+        }
+
+        /* Navbar Customization */
+        .navbar {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .navbar-brand span {
+            color: var(--primary-color);
+        }
+
+        .nav-link {
+            font-weight: 500;
+            color: #475569 !important;
+            transition: color var(--transition-speed);
+        }
+
+        .nav-link:hover {
+            color: var(--primary-color) !important;
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 160px 0 100px;
+            background: radial-gradient(circle at 10% 20%, rgba(79, 70, 229, 0.05) 0%, rgba(6, 182, 212, 0.05) 90%);
+            position: relative;
+        }
+
+        .hero-badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 6px 16px;
+            background-color: rgba(79, 70, 229, 0.1);
+            color: var(--primary-color);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+
+        .hero-title {
+            font-size: 3.5rem;
+            font-weight: 800;
+            line-height: 1.2;
+            color: var(--dark-color);
+        }
+
+        .hero-title .gradient-text {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .btn-primary-custom {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            border: none;
+            color: #fff;
+            padding: 14px 32px;
+            font-weight: 600;
+            border-radius: 50px;
+            box-shadow: 0 10px 20px -5px rgba(79, 70, 229, 0.4);
+            transition: all var(--transition-speed) ease;
+        }
+
+        .btn-primary-custom:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 25px -5px rgba(79, 70, 229, 0.5);
+            color: #fff;
+        }
+
+        /* Features Section */
+        .feature-card {
+            background: #ffffff;
+            border-radius: 20px;
+            padding: 40px 30px;
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            box-shadow: var(--card-shadow);
+            transition: all var(--transition-speed) ease;
+            height: 100%;
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(79, 70, 229, 0.3);
+        }
+
+        .feature-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 16px;
+            background: linear-gradient(135deg, rgba(79, 70, 229, 0.1), rgba(6, 182, 212, 0.1));
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            margin-bottom: 24px;
+        }
+
+        /* Program Section */
+        .program-card {
+            background: #fff;
+            border-radius: 16px;
+            padding: 30px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            border-left: 5px solid var(--primary-color);
+            transition: transform var(--transition-speed);
+        }
+
+        .program-card:hover {
+            transform: translateX(8px);
+        }
+
+        /* Partners / Collaborations Section */
+        .partner-logo-box {
+            background: #ffffff;
+            border-radius: 16px;
+            padding: 25px;
+            box-shadow: var(--card-shadow);
+            border: 1px solid rgba(226, 232, 240, 0.8);
+            transition: all var(--transition-speed);
+            height: 100%;
+            text-align: center;
+        }
+
+        .partner-logo-box:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary-color);
+        }
+
+        .partner-logo-box img {
+            max-height: 50px;
+            object-fit: contain;
+            filter: grayscale(100%);
+            opacity: 0.7;
+            transition: all var(--transition-speed);
+        }
+
+        .partner-logo-box:hover img {
+            filter: grayscale(0%);
+            opacity: 1;
+        }
+
+        /* Certificate Section */
+        .cert-card {
+            background: linear-gradient(135deg, #ffffff, #F8FAFC);
+            border-radius: 24px;
+            border: 2px dashed rgba(79, 70, 229, 0.3);
+            padding: 40px;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cert-badge-icon {
+            font-size: 3rem;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        /* Travel Results Section */
+        .travel-card {
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--card-shadow);
+            position: relative;
+            height: 350px;
+            border: none;
+        }
+
+        .travel-card img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .travel-card:hover img {
+            transform: scale(1.08);
+        }
+
+        .travel-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(to top, rgba(15, 23, 42, 0.9), transparent);
+            padding: 30px 20px 20px;
+            color: white;
+        }
+
+        /* Stats Badge */
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary-color);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            background: linear-gradient(135deg, var(--dark-color), #1E293B);
+            border-radius: 30px;
+            padding: 60px 40px;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -20%;
+            width: 400px;
+            height: 400px;
+            background: radial-gradient(circle, rgba(79, 70, 229, 0.2) 0%, rgba(0,0,0,0) 70%);
+            border-radius: 50%;
+        }
+
+        /* Form Inputs */
+        .form-control-custom {
+            padding: 14px 20px;
+            border-radius: 12px;
+            border: 1px solid #CBD5E1;
+            font-size: 1rem;
+        }
+
+        .form-control-custom:focus {
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 4px rgba(79, 70, 229, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark-color);
+            color: #94A3B8;
+            padding: 40px 0 20px;
+        }
+
+        /* Mobile Adjustments */
+        @media (max-width: 768px) {
+            .hero-title {
+                font-size: 2.3rem;
+            }
+            .hero {
+                padding: 120px 0 60px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Navigation -->
+    <nav class="navbar navbar-expand-lg fixed-top shadow-sm">
+        <div class="container">
+            <a class="navbar-brand fw-bold fs-4" href="#">English<span>Pro</span></a>
+            <button class="navbar-toggler border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto me-4">
+                    <li class="nav-item"><a class="nav-link" href="#about">О курсе</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#advantages">Преимущества</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#program">Программа</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#partners">Партнеры</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#certificate">Сертификат</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#travel">Поездки</a></li>
+                </ul>
+                <a href="#contact" class="btn btn-primary-custom btn-sm text-white px-4">Записаться</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero d-flex align-items-center" id="about">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6" data-aos="fade-right" data-aos-duration="1000">
+                    <div class="hero-badge">
+                        <i class="fa-solid fa-bolt me-2"></i> Быстрый старт в языках
+                    </div>
+                    <h1 class="hero-title mb-4">
+                        Заговорите на английском <span class="gradient-text">с нуля за 3 месяца</span>
+                    </h1>
+                    <p class="lead text-secondary mb-4">
+                        Авторская методика погружения, минимум сухой грамматики и 80% разговорной практики. Начните общаться уверенно без языкового барьера.
+                    </p>
+                    <div class="d-flex flex-sm-row flex-column gap-3">
+                        <a href="#contact" class="btn btn-primary-custom">Забронировать место</a>
+                        <a href="#program" class="btn btn-outline-secondary px-4 py-3 rounded-pill fw-semibold">Программа курса</a>
+                    </div>
+                    <div class="mt-4 pt-3 d-flex align-items-center gap-4 text-muted">
+                        <small><i class="fa-solid fa-check text-success me-1"></i> Онлайн / Офлайн</small>
+                        <small><i class="fa-solid fa-check text-success me-1"></i> Сертификат</small>
+                    </div>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left" data-aos-duration="1000" data-aos-delay="200">
+                    <div class="position-relative">
+                        <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?auto=format&fit=crop&w=800&q=80" class="img-fluid rounded-4 shadow-lg" alt="Обучение английскому">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Key Stats -->
+    <section class="py-5 bg-white border-bottom">
+        <div class="container">
+            <div class="row text-center gy-4" data-aos="fade-up">
+                <div class="6 col-md-3">
+                    <div class="stat-number">98%</div>
+                    <div class="text-muted fw-medium">Учеников заговорили</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number">3200+</div>
+                    <div class="text-muted fw-medium">Выпускников</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number">3 мес.</div>
+                    <div class="text-muted fw-medium">Длительность курса</div>
+                </div>
+                <div class="col-6 col-md-3">
+                    <div class="stat-number">4.9/5</div>
+                    <div class="text-muted fw-medium">Средний рейтинг</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Advantages Section -->
+    <section id="advantages" class="py-5 my-5">
+        <div class="container">
+            <div class="text-center max-w-700 mx-auto mb-5" data-aos="fade-up">
+                <h6 class="text-primary fw-bold text-uppercase">Почему мы</h6>
+                <h2 class="fw-bold fs-1">Как мы добиваемся результата всего за 90 дней?</h2>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-comments"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">80% Практики</h4>
+                        <p class="text-secondary mb-0">Каждое занятие вы говорите 40+ минут на английском с преподавателем и одногруппниками.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-brain"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Ассоциативный метод</h4>
+                        <p class="text-secondary mb-0">Без зубрежки. Вы запоминаете слова и правила через контекст, ассоциации и жизненные ситуации.</p>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="feature-card">
+                        <div class="feature-icon">
+                            <i class="fa-solid fa-user-check"></i>
+                        </div>
+                        <h4 class="fw-bold mb-3">Личный наставник</h4>
+                        <p class="text-secondary mb-0">Отдельный куратор проверяет домашние задания, исправляет произношение и отвечает на вопросы 24/7.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Program Section -->
+    <section id="program" class="py-5 bg-white">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h6 class="text-primary fw-bold text-uppercase">План обучения</h6>
+                <h2 class="fw-bold fs-1">Программа курса по месяцам</h2>
+            </div>
+
+            <div class="row g-4 justify-content-center">
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="100">
+                    <div class="program-card mb-4">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-primary rounded-pill px-3 py-2">Месяц 1</span>
+                            <small class="text-muted fw-bold">База и Уверенность</small>
+                        </div>
+                        <h4 class="fw-bold">Снятие барьера и базовый лексикон</h4>
+                        <p class="text-secondary">Преодоление страха говорения. Базовые грамматические конструкции, знакомство, путешествия, заказы в ресторанах, базовое восприятие речи на слух.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="200">
+                    <div class="program-card mb-4" style="border-left-color: var(--secondary-color);">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-info text-white rounded-pill px-3 py-2">Месяц 2</span>
+                            <small class="text-muted fw-bold">Свобода Общения</small>
+                        </div>
+                        <h4 class="fw-bold">Активный разговорный английский</h4>
+                        <p class="text-secondary">Умение выражать свое мнение, вести дискуссии, понимать беглую речь. Расширение словарного запаса до 1500+ ключевых слов.</p>
+                    </div>
+                </div>
+
+                <div class="col-lg-10" data-aos="fade-up" data-aos-delay="300">
+                    <div class="program-card" style="border-left-color: #10B981;">
+                        <div class="d-flex justify-content-between align-items-center mb-2">
+                            <span class="badge bg-success rounded-pill px-3 py-2">Месяц 3</span>
+                            <small class="text-muted fw-bold">Закрепление & Свобода</small>
+                        </div>
+                        <h4 class="fw-bold">Беглый язык и сложные темы</h4>
+                        <p class="text-secondary">Свободный разговор на любые повседневные темы, просмотр фильмов в оригинале, прохождение интервью и подготовка к поездкам за рубеж.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Collaborations / Partners Section -->
+    <section id="partners" class="py-5 my-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h6 class="text-primary fw-bold text-uppercase">Надежность и доверие</h6>
+                <h2 class="fw-bold fs-1">Коллаборации с ведущими организациями</h2>
+                <p class="text-secondary">Наши студенты стажируются и применяют знания в партнерских международных компаниях</p>
+            </div>
+
+            <div class="row g-4 align-items-center justify-content-center">
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="100">
+                    <div class="partner-logo-box">
+                        <img src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?auto=format&fit=crop&w=300&q=80" alt="Global Lingua">
+                        <h6 class="fw-bold mt-3 mb-0 text-dark">Global Lingua Network</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="200">
+                    <div class="partner-logo-box">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&w=300&q=80" alt="EduBridge">
+                        <h6 class="fw-bold mt-3 mb-0 text-dark">EduBridge Int.</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="300">
+                    <div class="partner-logo-box">
+                        <img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?auto=format&fit=crop&w=300&q=80" alt="SpeakUp Hub">
+                        <h6 class="fw-bold mt-3 mb-0 text-dark">SpeakUp Hub</h6>
+                    </div>
+                </div>
+                <div class="col-6 col-md-3" data-aos="fade-up" data-aos-delay="400">
+                    <div class="partner-logo-box">
+                        <img src="https://images.unsplash.com/photo-1522071820081-009f0129c71c?auto=format&fit=crop&w=300&q=80" alt="Future Careers">
+                        <h6 class="fw-bold mt-3 mb-0 text-dark">Future Careers Corp</h6>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificate Section -->
+    <section id="certificate" class="py-5 bg-white">
+        <div class="container">
+            <div class="row align-items-center gy-5">
+                <div class="col-lg-6" data-aos="fade-right">
+                    <h6 class="text-primary fw-bold text-uppercase">Официальное подтверждение</h6>
+                    <h2 class="fw-bold fs-1 mb-4">Получите международный сертификат EnglishPro</h2>
+                    <p class="text-secondary mb-4">По окончании 3-месячного интенсива вы сдаете финальный проект и разговорный экзамен, после чего получаете именной сертификат с уникальным регистрационным номером.</p>
+                    <ul class="list-unstyled text-secondary">
+                        <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Подтверждает уровень владения языком (CEFR Standard)</li>
+                        <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Котируется при трудоустройстве в международные компании</li>
+                        <li class="mb-2"><i class="fa-solid fa-circle-check text-success me-2"></i> Дает право на участие в языковых поездках за рубеж</li>
+                    </ul>
+                </div>
+                <div class="col-lg-6" data-aos="fade-left">
+                    <div class="cert-card text-center">
+                        <div class="cert-badge-icon">
+                            <i class="fa-solid fa-award"></i>
+                        </div>
+                        <h4 class="fw-bold text-dark mb-1">CERTIFICATE OF COMPLETION</h4>
+                        <p class="text-muted small mb-4">This is proudly presented to</p>
+                        <h3 class="text-primary fw-bold fst-italic mb-3">Alexey Smirnov</h3>
+                        <p class="text-secondary small mb-4">For successfully completing the 3-Month Intensive English Course from Zero to Conversational Level (B1/B2).</p>
+                        <div class="d-flex justify-content-between align-items-center border-top pt-3 text-muted small">
+                            <span><b>Date:</b> May 2026</span>
+                            <span class="text-primary fw-bold"><i class="fa-solid fa-shield-check"></i> Verified ID: #EP-8924</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Travel Results Section -->
+    <section id="travel" class="py-5 my-5">
+        <div class="container">
+            <div class="text-center mb-5" data-aos="fade-up">
+                <h6 class="text-primary fw-bold text-uppercase">Результаты обучения</h6>
+                <h2 class="fw-bold fs-1">Языковые поездки и стажировки за рубежом</h2>
+                <p class="text-secondary">Лучшие выпускники курса получают возможность путешествовать и практиковать язык в реальной среде</p>
+            </div>
+
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="card travel-card">
+                        <img src="https://images.unsplash.com/photo-1513635269975-59663e0ac1ad?auto=format&fit=crop&w=600&q=80" alt="Лондон">
+                        <div class="travel-overlay">
+                            <span class="badge bg-primary mb-2">Великобритания</span>
+                            <h4 class="fw-bold mb-1">Лондон</h4>
+                            <p class="small text-light opacity-75 mb-0">Разговорная практика с носителями языка в исторических местах столицы.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="card travel-card">
+                        <img src="https://images.unsplash.com/photo-1496442226666-8d4d0e62e6e9?auto=format&fit=crop&w=600&q=80" alt="Нью-Йорк">
+                        <div class="travel-overlay">
+                            <span class="badge bg-info text-white mb-2">США</span>
+                            <h4 class="fw-bold mb-1">Нью-Йорк</h4>
+                            <p class="small text-light opacity-75 mb-0">Бизнес-интенсив и нетворкинг с международными предпринимателями.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="300">
+                    <div class="card travel-card">
+                        <img src="https://images.unsplash.com/photo-1526481280693-3bfa7568e0f3?auto=format&fit=crop&w=600&q=80" alt="Мальта">
+                        <div class="travel-overlay">
+                            <span class="badge bg-success mb-2">Мальта</span>
+                            <h4 class="fw-bold mb-1">Мальта</h4>
+                            <p class="small text-light opacity-75 mb-0">Летний языковой лагерь и полное погружение в средиземноморскую среду.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact & Lead Form Section -->
+    <section id="contact" class="py-5 my-5">
+        <div class="container">
+            <div class="cta-section shadow-lg" data-aos="zoom-in" data-aos-duration="800">
+                <div class="row align-items-center relative-zinc">
+                    <div class="col-lg-6 mb-4 mb-lg-0">
+                        <h2 class="display-6 fw-bold mb-3">Готовы заговорить на английском уже через 3 месяца?</h2>
+                        <p class="text-light opacity-75 lead mb-4">Оставьте заявку прямо сейчас и получите <b>бесплатный вводный урок</b> и определение вашего уровня языка!</p>
+                        <div class="d-flex align-items-center gap-3">
+                            <i class="fa-solid fa-gift fs-2 text-warning"></i>
+                            <span>Скидка 20% при записи до конца недели!</span>
+                        </div>
+                    </div>
+                    <div class="col-lg-6">
+                        <div class="card border-0 rounded-4 p-4 text-dark shadow">
+                            <form onsubmit="event.preventDefault(); alert('Спасибо! Мы свяжемся с вами в ближайшее время.');">
+                                <h4 class="fw-bold mb-3 text-center">Записаться на пробный урок</h4>
+                                <div class="mb-3">
+                                    <input type="text" class="form-control form-control-custom" placeholder="Ваше имя" required>
+                                </div>
+                                <div class="mb-3">
+                                    <input type="tel" class="form-control form-control-custom" placeholder="Ваш телефон" required>
+                                </div>
+                                <div class="mb-3">
+                                    <select class="form-select form-control-custom">
+                                        <option selected>Формат обучения</option>
+                                        <option value="1">Онлайн в мини-группе</option>
+                                        <option value="2">Индивидуально</option>
+                                    </select>
+                                </div>
+                                <button type="submit" class="btn btn-primary-custom w-100 py-3 mt-2">Забронировать бесплатно</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="row gy-4">
+                <div class="col-md-6">
+                    <a class="navbar-brand fw-bold fs-4 text-white" href="#">English<span style="color:var(--secondary-color)">Pro</span></a>
+                    <p class="mt-2 text-muted">Эффективные курсы английского языка для быстрого старта.</p>
+                </div>
+                <div class="col-md-6 text-md-end">
+                    <div class="fs-4 mb-2">
+                        <a href="#" class="text-white me-3"><i class="fa-brands fa-telegram"></i></a>
+                        <a href="#" class="text-white me-3"><i class="fa-brands fa-whatsapp"></i></a>
+                        <a href="#" class="text-white"><i class="fa-brands fa-instagram"></i></a>
+                    </div>
+                    <p class="small text-muted mb-0">&copy; 2026 EnglishPro. Все права защищены.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap 5 JS Bundle -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- AOS Animation Library JS -->
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    
+    <script>
+        // Инициализация библиотек анимаций
+        AOS.init({
+            once: true, // Анимация проигрывается только один раз при скролле
+            duration: 800, // Длительность анимации
+            easing: 'ease-in-out'
+        });
+    </script>
+</body>
+</html>
